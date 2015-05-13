@@ -5,7 +5,7 @@
     Response.StatusCode = 200;
     Response.ContentType = "text/plain";
 
-    var location = ConfigurationManager.AppSettings["conf.Location"];
+    var location = ConfigurationManager.AppSettings["client.Location"];
 
     if (string.IsNullOrWhiteSpace(location))
     {
