@@ -1,9 +1,6 @@
 ﻿@{
     Layout = "~/_Layout.cshtml";
-
-    //var dataCache = new Microsoft.ApplicationServer.Caching.DataCache();
-    //var value = dataCache.Get("__videoIndex") ?? -1;
-    var videoIndex = -1;
+   
 }
 
 @section scripts {
@@ -12,14 +9,11 @@
     <script type="text/javascript" src="http://hub.orwellasp.net/signalr/hubs"></script>
     <script type="text/javascript" src="http://api.orwellasp.net/api/video"></script>
 
-
     @*<script type="text/javascript" src="http://localhost:8082/signalr/hubs"></script>
         <script type="text/javascript" src="http://localhost:8083/api/video"></script>
     *@
 
     <script type="text/javascript">
-        var currentIndex = @videoIndex;
-
         function setVideoPlayer(index) {
             var video = __videos[index];
             var videoUrl = "http://www.youtube.com/embed/" + video.Key + "?autoplay=1"
@@ -29,10 +23,6 @@
         }
 
         $(function () {
-            if(currentIndex != -1) {
-                setVideoPlayer(currentIndex);
-            }
-
             $.connection.hub.url = "http://hub.orwellasp.net/signalr";
             @*$.connection.hub.url = "http://localhost:8082/signalr";*@
             var videoPlayer = $.connection.videoHub;
